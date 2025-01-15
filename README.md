@@ -1,6 +1,12 @@
-# AudioExtractor-and-Transcriber
+# Audio-Transcriber
 
-This repository contains a comprehensive script for handling video and audio files, designed to extract the audio track from a video, process it, and then transcribe the resulting audio into text. The workflow is divided into several stages, each dedicated to a specific function.
+Inspired by https://github.com/Black-coffe/AudioExtractor-and-Transcriber
+
+This repository contains a comprehensive script for handling video to transcribe it into text.
+You can do several task by them:
+1. Get transcription from video file (mp42text)
+2. Extract audio from video file (mp42wav)
+3. Get text transcription from audio file (wav2text)
 
 ## Features
 
@@ -31,19 +37,27 @@ FFmpeg is a complete, cross-platform solution to record, convert and stream audi
 
 ### Vosk Models
 
-Vosk offers a variety of models that support different languages and are optimized for various audio types. You can download the appropriate model for your project from [Vosk Models](https://alphacephei.com/vosk/models). Ensure to download and specify the correct model path within the script.
+Vosk offers a variety of models that support different languages and are optimized for various audio types. You can download the appropriate model for your project from [Vosk Models](https://alphacephei.com/vosk/models). Ensure to download and specify the correct model path within the script. Save the model to model folders.
 
 ## Installation
 
 Clone this repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/yourusername/AudioExtractor-and-Transcriber.git
-cd AudioExtractor-and-Transcriber
+git clone https://github.com/gs1571/audio-transcriber.git
+cd audio-transcriber
 pip install -r requirements.txt
 
 ```
+Additionally, you need to install [FFmpeg](https://www.gyan.dev/ffmpeg/builds/#release-builds). On macOS, you can install FFmpeg using Homebrew:
+
+```bash
+brew install ffmpeg
+```
 
 ### Usage
-To use the script, simply specify the path to your video file and the desired output path for the audio file. The script will handle the extraction, processing, and transcription:
 
+Use script follow the help information
+```
+python at.py --help
+```
