@@ -5,11 +5,10 @@ from moviepy import VideoFileClip
 from pydub import AudioSegment
 
 
-def extract_audios_from_video(src: str, dst: str) -> None:
+def wav_from_video(src: str, dst: str) -> None:
 
-    video_clip = VideoFileClip(src)
     temp_audio_filepath = f"files/{uuid.uuid4()}.mp3"  # use temporary file to store MP3
-    video_clip.audio.write_audiofile(temp_audio_filepath)
+    mp3_from_video(src, temp_audio_filepath)
 
     # use pydub to convert audio to mono and set the desired sampling rate
     audio = AudioSegment.from_file(temp_audio_filepath)
@@ -23,3 +22,9 @@ def extract_audios_from_video(src: str, dst: str) -> None:
 
     # remove temporary file
     os.remove(temp_audio_filepath)
+
+
+def mp3_from_video(src: str, dst: str) -> None:
+
+    video_clip = VideoFileClip(src)
+    video_clip.audio.write_audiofile(dst)
