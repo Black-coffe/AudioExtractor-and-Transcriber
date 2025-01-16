@@ -4,7 +4,7 @@ import os
 import uuid
 from pathlib import Path
 
-from atlib.mp42wav import wav_from_video, mp3_from_video
+from atlib.mp42wav import mp3_from_video, wav_from_video
 from atlib.wav2text import transcribe_audio
 
 
