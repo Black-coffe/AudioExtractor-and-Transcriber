@@ -1,3 +1,4 @@
-moviepy
-pydub
-vosk
+moviepy~=2.1.2
+pydub~=0.25.1
+vosk~=0.3.44
+tqdm~=4.67.1
