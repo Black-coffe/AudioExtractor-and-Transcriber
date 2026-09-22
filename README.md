@@ -37,7 +37,7 @@ FFmpeg is a complete, cross-platform solution to record, convert and stream audi
 
 ### Vosk Models
 
-Vosk offers a variety of models that support different languages and are optimized for various audio types. You can download the appropriate model for your project from [Vosk Models](https://alphacephei.com/vosk/models). Ensure to download and specify the correct model path within the script. Save the model to model folders.
+Vosk offers a variety of models that support different languages and are optimized for various audio types. You can download the appropriate model for your project from [Vosk Models](https://alphacephei.com/vosk/models). Unpack the model into the `models/` folder and pass its path with `-m`, e.g. `-m models/vosk-model-ru-0.42`. Save the model to model folders.
 
 ## Installation
 
@@ -55,9 +55,29 @@ Additionally, you need to install [FFmpeg](https://www.gyan.dev/ffmpeg/builds/#r
 brew install ffmpeg
 ```
 
-### Usage
+## Usage
 
-Use script follow the help information
+Everything runs through one command-line entry point, `at.py`. See `python at.py <command> --help` for all options.
+
+| Command | What it does |
+|---|---|
+| `mp42text` | Video → text in one step (extract audio, convert, transcribe) |
+| `mp42wav` | Extract audio from a video as 16 kHz mono WAV, ready for recognition |
+| `mp42mp3` | Extract audio from a video as MP3 |
+| `wav2text` | Transcribe a WAV file |
+| `text2parts` | Split a transcription into parts of a fixed size (4000 characters by default) |
+
+```bash
+# video straight to text; the result lands next to the video as lecture.txt
+python at.py mp42text -s lecture.mp4 -m models/vosk-model-ru-0.42
+
+# keep the raw Vosk JSON too (word timings and confidence)
+python at.py mp42text -s lecture.mp4 -m models/vosk-model-ru-0.42 -dj lecture.json
+
+# split the transcription into lecture_part_1.txt, lecture_part_2.txt, ...
+python at.py text2parts -s lecture.txt
 ```
-python at.py --help
-```
+
+## Credits
+
+The command-line interface and the `atlib` package were contributed by [Grigorii Solovev (@gs1571)](https://github.com/gs1571).
